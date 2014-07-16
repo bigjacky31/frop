@@ -42,8 +42,23 @@ function FropFormCtrl($scope) {
 		msg += "fropFiscalPower : " + $scope.fropFiscalPower + "\n";
 		msg += "fropKilometers : " + $scope.fropKilometers + "\n";
 		msg += "fropFoodPrice : " + $scope.fropFoodPrice + "\n";
-		msg += "calculateFraisReelsCost : " + $scope.calculateFraisReelsCost( $scope.fropFiscalPower, $scope.fropKilometers ) + "\n";
-		msg += "calculateDefaultCost : " + $scope.calculateDefaultCost( $scope.fropIncome ) + "\n";
+		
+		var fraisReelsCost = $scope.calculateFraisReelsCost( $scope.fropFiscalPower, $scope.fropKilometers );
+		var defaultCost = $scope.calculateDefaultCost( $scope.fropIncome );
+		
+		msg += "calculateFraisReelsCost : " + fraisReelsCost + "\n";
+		msg += "calculateDefaultCost : " + defaultCost + "\n";
+		
+		
+		//TODO A FAIRE
+		if( fraisReelsCost > defaultCost ){
+			$('.well p').html('Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla');
+		}
+		else{
+			$('.well p').html('Pour vous, c\'est nul');
+		}
+		
+		
 
 		alert( msg );
 	};
