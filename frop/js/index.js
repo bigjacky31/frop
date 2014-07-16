@@ -1,6 +1,6 @@
 function FropFormCtrl($scope) {
 
-	$scope.calculateKilometersCost = function( fiscalPower, kilometers ){
+	$scope.calculateFraisReelsCost = function( fiscalPower, kilometers ){
 		//Bareme 2014
 		// cf http://www.service-public.fr/actualites/003037.html
 		if( fiscalPower <= 3 ){
@@ -30,6 +30,11 @@ function FropFormCtrl($scope) {
 		}
 	};
 
+	$scope.calculateDefaultCost = function(income){
+		return income * 0.1;
+	};
+	
+
 	$scope.submit = function() {
 
 		var msg = "";
@@ -37,7 +42,8 @@ function FropFormCtrl($scope) {
 		msg += "fropFiscalPower : " + $scope.fropFiscalPower + "\n";
 		msg += "fropKilometers : " + $scope.fropKilometers + "\n";
 		msg += "fropFoodPrice : " + $scope.fropFoodPrice + "\n";
-		msg += "test : " + $scope.calculateKilometersCost( 3, 10000 );
+		msg += "calculateFraisReelsCost : " + $scope.calculateFraisReelsCost( $scope.fropFiscalPower, $scope.fropKilometers ) + "\n";
+		msg += "calculateDefaultCost : " + $scope.calculateDefaultCost( $scope.fropIncome ) + "\n";
 
 		alert( msg );
 	};
