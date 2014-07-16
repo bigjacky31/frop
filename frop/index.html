@@ -76,12 +76,12 @@
 
 			<div class="col-sm-6 col-sm-offset-3">
 
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form" ng-controller="FropFormCtrl" ng-submit="submit()">
 					<div class="form-group">
 						<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
 						<div class="col-sm-8">
 							<input type="number" class="form-control" id="inputIncome"
-								placeholder="Revenus" />
+								placeholder="Revenus" ng-model="fropIncome"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -89,7 +89,7 @@
 							title="Puissance fiscale du véhicule en CV">Puissance
 							fiscale</label>
 						<div class="col-sm-8">
-							<select class="form-control" id="inputPuissance">
+							<select class="form-control" id="inputPuissance" ng-model="fropFiscalPower">
 								<option>Puissance fiscale</option>
 								<option>&lt;= 3 CV</option>
 								<option>4 CV</option>
@@ -105,7 +105,7 @@
 							parcourus</label>
 						<div class="col-sm-8">
 							<input type="number" class="form-control" id="inputKm"
-								placeholder="Kms parcourus">
+								placeholder="Kms parcourus" ng-model="fropKilometers">
 						</div>
 					</div>
 					<div class="form-group">
@@ -113,7 +113,7 @@
 							title="Frais de repas pour votre emploi">Frais de repas</label>
 						<div class="col-sm-8">
 							<input type="number" class="form-control" id="inputFraisRepas"
-								placeholder="Frais de repas">
+								placeholder="Frais de repas" ng-model="fropFoodPrice">
 						</div>
 					</div>
 					<div class="form-group">
