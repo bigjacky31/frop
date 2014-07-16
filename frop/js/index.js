@@ -37,6 +37,7 @@ function FropFormCtrl($scope) {
 		msg += "fropFiscalPower : " + $scope.fropFiscalPower + "\n";
 		msg += "fropKilometers : " + $scope.fropKilometers + "\n";
 		msg += "fropFoodPrice : " + $scope.fropFoodPrice + "\n";
+		msg += "test : " + $scope.calculateKilometersCost( 3, 10000 );
 
 		alert( msg );
 	};
