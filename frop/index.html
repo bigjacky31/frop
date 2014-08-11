@@ -80,7 +80,7 @@
 					<div class="form-group">
 						<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
 						<div class="col-sm-8">
-							<input type="number" class="form-control" id="inputIncome"
+							<input type="number" step="100" class="form-control" id="inputIncome"
 								placeholder="Revenus" ng-model="fropIncome"/>
 						</div>
 					</div>
@@ -104,7 +104,7 @@
 							title="Kms parcourus en 1 an pour votre emploi">Kms
 							parcourus</label>
 						<div class="col-sm-8">
-							<input type="number" class="form-control" id="inputKm"
+							<input type="number" step="100" class="form-control" id="inputKm"
 								placeholder="Kms parcourus" ng-model="fropKilometers">
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 						<label for="inputFraisRepas" class="col-sm-4 control-label"
 							title="Frais de repas pour votre emploi">Frais de repas</label>
 						<div class="col-sm-8">
-							<input type="number" class="form-control" id="inputFraisRepas"
+							<input type="number" step="100" class="form-control" id="inputFraisRepas"
 								placeholder="Frais de repas" ng-model="fropFoodPrice">
 						</div>
 					</div>
@@ -149,7 +149,12 @@
 			<div class="col-sm-6 col-sm-offset-3">
 				<ul class="list-group">
 					<li class="list-group-item alert-warning">
-					<strong>Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla</strong></li>
+						<div id="result-sentence">
+					<strong>
+							Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla
+						</strong>
+						</div>
+					</li>
 					<li class="list-group-item alert-warning">Pour ce niveau de revenus, le
 						régime des frais réels est interessant à partir d'une distance
 						annuelles de 15000 km.</li>

@@ -57,6 +57,29 @@ function FropFormCtrl($scope) {
 		return borneMiddle;
 	};
 
+	
+
+	$scope.sortSerie = function( serie ){
+		var sortedSerie = [];
+		
+		for( var i = 0 ; i < serie.length ; i++ ){
+			var curPoint = serie[i];
+			var goOn = true;
+			for( var j = 0 ; goOn && j < sortedSerie.length ; j++ ){
+				var curSortedPoint = sortedSerie[j];
+				if( curPoint[0] < curSortedPoint[0] ){
+					sortedSerie.splice(j, 0, curPoint);
+					goOn = false;
+				}
+			}
+			if( goOn ){
+				sortedSerie.push(curPoint);
+			}
+		}
+		
+		return sortedSerie;
+	}
+	
 
 	$scope.submit = function() {
 
@@ -77,13 +100,24 @@ function FropFormCtrl($scope) {
 
 		//TODO A FAIRE
 		if( fraisReelsCost > defaultCost ){
-			$('.well p').html('Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla');
+			$('#result-sentence').html('<strong>Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla</strong>');
 		}
 		else{
-			$('.well p').html('Pour vous, c\'est nul');
+			$('#result-sentence').html('<strong>Pour vous, c\'est nul</strong>');
 		}
 
 
+		//Calcul des points à afficher pour la courbe des frais réels
+		var fraisReelsSerieData = [
+		       [0, 0], 
+		       [rentabilityKms, $scope.calculateFraisReelsCost($scope.fropFiscalPower, rentabilityKms)],
+		       [5000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 5000)], 
+		       [20000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 20000)], 
+		       [30000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 30000)]
+		];
+		
+		//Tri des points à afficher pour la courbe des frais réels 
+		fraisReelsSerieData = $scope.sortSerie( fraisReelsSerieData );
 
 		alert( msg );
 
@@ -166,14 +200,7 @@ function FropFormCtrl($scope) {
 				name: 'Frais réels',
 				color: 'rgba(126,86,134,.9)',
 				//TODO sort data
-				data: [
-				       [0, 0], 
-				       [rentabilityKms, $scope.calculateFraisReelsCost($scope.fropFiscalPower, rentabilityKms)],
-				       [5000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 5000)], 
-				       [20000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 20000)], 
-				       [30000, $scope.calculateFraisReelsCost($scope.fropFiscalPower, 30000)]
-				       
-				       ]
+				data : fraisReelsSerieData
 			}]
 		});
 	};
