@@ -2,12 +2,12 @@
 <html ng-app>
 <head>
 <title>FROP</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all" />
-<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/frop.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/todo.css" rel="stylesheet" type="text/css" media="all" />
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/angular.js"></script>
@@ -20,7 +20,7 @@
 <body role="document">
 
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -53,21 +53,17 @@
 		</div>
 	</div>
 
-	<div class="container theme-showcase" role="main">
-
-		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<h1>Frais réels ! Ou pas ...</h1>
-			<p>"Frais réels ! ou pas ..." vous permet de déterminer s'il vous
+	<header class="sb-page-header">
+	<div class="container">
+		<h1>Frais réels ! Ou pas ...</h1>
+		<p>"Frais réels ! ou pas ..." vous permet de déterminer s'il vous
 				est intéressant de passer au régime des frais réels ou de rester à
 				la déduction de 10% appliquée par défaut.</p>
-			<p>
-				<a href="#" class="btn btn-primary btn-lg" role="button">Commencer
-					la simulation !</a>
-			</p>
-		</div>
+	</div>
+	</header>
 
 
+	<div class="container theme-showcase" role="main">
 
 		<div class="page-header">
 			<h1>Vos données</h1>
@@ -76,12 +72,13 @@
 
 			<div class="col-sm-6 col-sm-offset-3">
 
-				<form class="form-horizontal" role="form" ng-controller="FropFormCtrl" ng-submit="submit()">
+				<form class="form-horizontal" role="form"
+					ng-controller="FropFormCtrl" ng-submit="submit()">
 					<div class="form-group">
 						<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
 						<div class="col-sm-8">
-							<input type="number" step="100" class="form-control" id="inputIncome"
-								placeholder="Revenus" ng-model="fropIncome"/>
+							<input type="number" step="100" class="form-control"
+								id="inputIncome" placeholder="Revenus" ng-model="fropIncome" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -89,7 +86,8 @@
 							title="Puissance fiscale du véhicule en CV">Puissance
 							fiscale</label>
 						<div class="col-sm-8">
-							<select class="form-control" id="inputPuissance" ng-model="fropFiscalPower">
+							<select class="form-control" id="inputPuissance"
+								ng-model="fropFiscalPower">
 								<option>Puissance fiscale</option>
 								<option value="3">&lt;= 3 CV</option>
 								<option value="4">4 CV</option>
@@ -112,8 +110,9 @@
 						<label for="inputFraisRepas" class="col-sm-4 control-label"
 							title="Frais de repas pour votre emploi">Frais de repas</label>
 						<div class="col-sm-8">
-							<input type="number" step="100" class="form-control" id="inputFraisRepas"
-								placeholder="Frais de repas" ng-model="fropFoodPrice">
+							<input type="number" step="100" class="form-control"
+								id="inputFraisRepas" placeholder="Frais de repas"
+								ng-model="fropFoodPrice">
 						</div>
 					</div>
 					<div class="form-group">
@@ -148,19 +147,18 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<ul class="list-group">
-					<li class="list-group-item alert-warning">
+					<li class="list-group-item frop-fraisreels-yes">
 						<div id="result-sentence">
-					<strong>
-							Pour vous, il est plus intéressant de passer au frais réels. Blablabla blablabla
-						</strong>
+							<strong> Pour vous, il est plus intéressant de passer au
+								frais réels. Blablabla blablabla </strong>
 						</div>
 					</li>
-					<li class="list-group-item alert-warning">Pour ce niveau de revenus, le
-						régime des frais réels est interessant à partir d'une distance
-						annuelles de 15000 km.</li>
-					<li class="list-group-item alert-warning">Pour ce kilométrage, le régime des
-						frais réels est interessant à partir d'un revenu annuel de 25000
-						€.</li>
+					<li class="list-group-item frop-fraisreels-yes">Pour ce niveau de
+						revenus, le régime des frais réels est interessant à partir d'une
+						distance annuelles de 15000 km.</li>
+					<li class="list-group-item frop-fraisreels-yes">Pour ce kilométrage,
+						le régime des frais réels est interessant à partir d'un revenu
+						annuel de 25000 €.</li>
 				</ul>
 			</div>
 		</div>
