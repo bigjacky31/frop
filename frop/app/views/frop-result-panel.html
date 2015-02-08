@@ -1,0 +1,45 @@
+<div ng-controller="FropResultPanelCtrl" ng-show="mustShowPanel">
+	<div class="page-header">
+		<h1>Résultats</h1>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<ul class="list-group">
+				<li class="list-group-item"><strong>Vos données</strong></li>
+				<li class="list-group-item">Revenus annuels : {{model.income}}
+					€</li>
+				<li class="list-group-item">Puissance fiscale du véhicule :
+					{{model.fiscalPower}} CV</li>
+				<li class="list-group-item">Kilomètres parcourus en 1 an :
+					{{model.kilometers}} km</li>
+				<li class="list-group-item">Frais de repas en 1 an :
+					{{model.foodPrice}} €</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<ul class="list-group">
+				<li class="list-group-item frop-fraisreels-yes">
+					<div id="result-sentence">
+						<strong> Pour vous, il est plus intéressant de passer au
+							frais réels. Blablabla blablabla </strong>
+					</div>
+				</li>
+				<li class="list-group-item frop-fraisreels-yes">Pour ce niveau
+					de revenus, le régime des frais réels est interessant à partir
+					d'une distance annuelles de 15000 km.</li>
+				<li class="list-group-item frop-fraisreels-yes">Pour ce niveau
+					de revenus, le régime des frais réels est interessant à partir
+					d'une distance annuelles de 15000 km.</li>
+				<li class="list-group-item frop-fraisreels-no">Pour ce
+					kilométrage, le régime des frais réels est interessant à partir
+					d'un revenu annuel de 25000 €.</li>
+			</ul>
+		</div>
+	</div>
+</div>

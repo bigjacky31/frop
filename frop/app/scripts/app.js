@@ -2,14 +2,13 @@
 
 /**
  * @ngdoc overview
- * @name titiApp
+ * @name frop
  * @description
- * # titiApp
+ * # frop
  *
  * Main module of the application.
  */
-angular
-  .module('titiApp', [
+angular.module('frop', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -22,8 +21,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/frop-page.html'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -32,4 +30,14 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  
+  .directive('staticInclude', function($http, $templateCache, $compile) {
+	    return function(scope, element, attrs) {
+	        var templatePath = attrs.staticInclude;
+	        $http.get(templatePath, { cache: $templateCache }).success(function(response) {
+	            var contents = element.html(response).contents();
+	            $compile(contents)(scope);
+	        });
+	    };
+	});

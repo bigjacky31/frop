@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name titiApp.controller:MainCtrl
+ * @name frop.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the titiApp
+ * Controller of the frop app
  */
-angular.module('titiApp')
+angular.module('frop')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
