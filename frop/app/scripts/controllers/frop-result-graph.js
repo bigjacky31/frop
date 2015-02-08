@@ -34,7 +34,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 		var rentabilityKms = fropCalculator.calculateRentabilityKms(inputData.fiscalPower, inputData.income);
 
 
-		//Calcul des points � afficher pour la courbe des frais r�els
+		//Calcul des points a afficher pour la courbe des frais r�els
 		var fraisReelsSerieData = [
 		                           [0, 0], 
 		                           [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms)],
@@ -43,7 +43,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 		                           [30000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 30000)]
 		                           ];
 
-		//Tri des points � afficher pour la courbe des frais r�els 
+		//Tri des points a afficher pour la courbe des frais r�els 
 		fraisReelsSerieData = sortSerie( fraisReelsSerieData );
 
 
@@ -53,7 +53,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				type: 'area'
 			},
 			title: {
-				text: 'Frais r�els... Ou pas !'
+				text: 'Frais réels... Ou pas !'
 			},
 			credits: {
 				enabled: false
@@ -65,7 +65,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 			xAxis: {
 				title: {
 					enabled: true,
-					text: 'Kilom�tres'
+					text: 'Kilomètres'
 				},
 				labels: {
 					formatter: function() {
@@ -86,7 +86,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				            	 color : 'red',
 				            	 width : 2,
 				            	 label : {
-				            		 text : 'Votre kilom�trage'
+				            		 text : 'Votre kilométrage'
 				            	 }
 				             }
 				             ],
@@ -94,11 +94,11 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 			},
 			yAxis: {
 				title: {
-					text: 'D�ductible'
+					text: 'Déductible'
 				},
 				labels: {
 					formatter: function() {
-						return this.value + ' �';
+						return this.value + ' €';
 					}
 				},
 				lineWidth: 2
@@ -108,7 +108,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 			},
 			tooltip: {
 				headerFormat: '<b>{series.name}</b><br/>',
-				pointFormat: '{point.x} km: {point.y} �'
+				pointFormat: '{point.x} km: {point.y} €'
 			},
 			plotOptions: {
 				spline: {
@@ -122,7 +122,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				color: 'rgba(165,170,217,1)',
 				data: [[0, defaultCost], [30000, defaultCost]]
 			}, {
-				name: 'Frais r�els',
+				name: 'Frais réels',
 				color: 'rgba(126,86,134,.9)',
 				//TODO sort data
 				data : fraisReelsSerieData

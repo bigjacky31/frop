@@ -8,14 +8,14 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<ul class="list-group">
 				<li class="list-group-item"><strong>Vos données</strong></li>
-				<li class="list-group-item">Revenus annuels : {{model.income}}
-					€</li>
+				<li class="list-group-item">Revenus annuels :
+					{{inputData.income}} €</li>
 				<li class="list-group-item">Puissance fiscale du véhicule :
-					{{model.fiscalPower}} CV</li>
+					{{inputData.fiscalPower}} CV</li>
 				<li class="list-group-item">Kilomètres parcourus en 1 an :
-					{{model.kilometers}} km</li>
+					{{inputData.kilometers}} km</li>
 				<li class="list-group-item">Frais de repas en 1 an :
-					{{model.foodPrice}} €</li>
+					{{inputData.foodPrice}} €</li>
 			</ul>
 		</div>
 	</div>
@@ -23,23 +23,42 @@
 
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
-			<ul class="list-group">
-				<li class="list-group-item frop-fraisreels-yes">
-					<div id="result-sentence">
-						<strong> Pour vous, il est plus intéressant de passer au
-							frais réels. Blablabla blablabla </strong>
-					</div>
-				</li>
-				<li class="list-group-item frop-fraisreels-yes">Pour ce niveau
-					de revenus, le régime des frais réels est interessant à partir
-					d'une distance annuelles de 15000 km.</li>
-				<li class="list-group-item frop-fraisreels-yes">Pour ce niveau
-					de revenus, le régime des frais réels est interessant à partir
-					d'une distance annuelles de 15000 km.</li>
-				<li class="list-group-item frop-fraisreels-no">Pour ce
-					kilométrage, le régime des frais réels est interessant à partir
-					d'un revenu annuel de 25000 €.</li>
+
+			<ul class="list-group" ng-show="result.fraisReelsOk">
+				<li class="list-group-item frop-fraisreels-yes"><strong>Pour vous, il est
+						intéressant de souscrire à l'option des frais réels.</strong></li>
+				<li class="list-group-item frop-fraisreels-yes">Avec l'option frais réels,
+					{{result.deductibleFraisReels}} € sont déductibles au lieu de
+					{{result.deductibleDefault}} € avec l'option par défaut, soit une
+					différence de {{result.deductibleDelta}} €</li>
+				<li class="list-group-item frop-fraisreels-yes">Pour ce niveau de revenus, l'option
+					frais réels est interessante à partir d'une distance annuelle de
+					{{result.rentableKms}} km.</li>
+				<li class="list-group-item frop-fraisreels-yes">Pour ce kilométrage, l'option frais
+					réels est interessante à partir d'un revenu annuel de
+					{{result.rentableIncome}} €.</li>
 			</ul>
+
+
+
+
+			<ul class="list-group" ng-show="! result.fraisReelsOk">
+				<li class="list-group-item frop-fraisreels-no"><strong>Pour vous, il
+						n'est pas intéressant de souscrire à l'option des frais réels.</strong></li>
+				<li class="list-group-item frop-fraisreels-no">Avec l'option par défaut,
+					{{result.deductibleDefault}} € sont déductibles au lieu de
+					{{result.deductibleFraisReels}} € avec l'option frais réels, soit une
+					différence de {{result.deductibleDelta}} €</li>
+				<li class="list-group-item frop-fraisreels-no">Pour ce niveau de revenus, l'option
+					frais réels est interessante à partir d'une distance annuelle de
+					{{result.rentableKms}} km.</li>
+				<li class="list-group-item frop-fraisreels-no">Pour ce kilométrage, l'option frais
+					réels est interessante à partir d'un revenu annuel inférieur à
+					{{result.rentableIncome}} €.</li>
+			</ul>
+
+
+
 		</div>
 	</div>
 </div>

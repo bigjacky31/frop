@@ -39,7 +39,7 @@ angular.module('frop').factory('fropCalculator', function() {
 		calculateRentabilityKms : function( fiscalPower, income ){
 			//Calcul de la borne max
 			var defaultCost = this.calculateDefaultCost( income )
-			var borneMax = 100000;
+			var borneMax = 1000000;
 
 
 			//Calcul par dichotomie
@@ -49,6 +49,32 @@ angular.module('frop').factory('fropCalculator', function() {
 
 			while( borneMax - borneMin > 1 ){
 				if( defaultCost > this.calculateFraisReelsCost( fiscalPower, borneMiddle ) ){
+					borneMin = borneMiddle;
+				}
+				else{
+					borneMax = borneMiddle;
+				}
+				borneMiddle = ( borneMin + borneMax ) / 2;
+			}
+			return borneMiddle;
+		},
+		
+		
+
+		
+		calculateRentabilityIncome : function( fiscalPower, kms ){
+			//Calcul de la borne max
+			var borneMax = 10000000;
+			var fraisReelsCost = this.calculateFraisReelsCost( fiscalPower, kms );
+
+			//Calcul par dichotomie
+			var borneMin = 0;
+			var goOn = true;
+			var borneMiddle = ( borneMin + borneMax ) / 2;
+
+			while( borneMax - borneMin > 1 ){
+				var defaultCost = this.calculateDefaultCost( borneMiddle )
+				if( defaultCost < fraisReelsCost ){
 					borneMin = borneMiddle;
 				}
 				else{
