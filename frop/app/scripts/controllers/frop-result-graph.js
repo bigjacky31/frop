@@ -36,11 +36,28 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 
 		//Calcul des points a afficher pour la courbe des frais r�els
 		var fraisReelsSerieData = [
-		                           [0, 0], 
 		                           [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms)],
+		                           [0, 0], 
 		                           [5000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 5000)], 
+		                           [10000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 10000)], 
+		                           [15000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 15000)], 
 		                           [20000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 20000)], 
-		                           [30000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 30000)]
+		                           [25000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 25000)], 
+		                           [30000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 30000)], 
+		                           [35000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 35000)], 
+		                           [40000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 40000)], 
+		                           [45000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 45000)], 
+		                           [50000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 50000)], 
+		                           [55000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 55000)], 
+		                           [60000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 60000)], 
+		                           [65000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 65000)], 
+		                           [70000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 70000)], 
+		                           [75000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 75000)], 
+		                           [80000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 80000)],
+		                           [85000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 85000)],
+		                           [90000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 90000)],
+		                           [95000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 95000)],
+		                           [100000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 100000)]
 		                           ];
 
 		//Tri des points a afficher pour la courbe des frais r�els 
