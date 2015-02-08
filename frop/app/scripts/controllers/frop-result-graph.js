@@ -82,7 +82,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				            	 }
 				             },
 				             {
-				            	 value : $scope.fropKilometers,
+				            	 value : inputData.kilometers,
 				            	 color : 'red',
 				            	 width : 2,
 				            	 label : {
