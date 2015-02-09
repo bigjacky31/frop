@@ -22,10 +22,13 @@ angular.module('frop').controller('FropResultPanelCtrl', function ($scope, fropC
 				fraisReelsOk : fraisReelsOk
 		}
 
-	      //scroll jusqu'au div des resultats
 //	      $location.hash('resultDiv');
 //	      $anchorScroll();
-		anchorSmoothScroll.scrollTo('resultDiv');
+	      //scroll jusqu'au div des resultats
+		//SetTimeout pour laisser le div s'afficher avant d'init le graph
+    	setTimeout(function() {
+    		anchorSmoothScroll.scrollTo('resultDiv');
+    	}, 0);
 		
 	};
 
