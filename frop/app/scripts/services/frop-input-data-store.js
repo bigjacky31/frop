@@ -1,4 +1,3 @@
-var myModule = angular.module('myModule', []);
 angular.module('frop').factory('fropInputDataStore', function() {
 	
 	var fropInputData = null;

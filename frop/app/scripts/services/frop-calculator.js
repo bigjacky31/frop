@@ -1,4 +1,3 @@
-var myModule = angular.module('myModule', []);
 angular.module('frop').factory('fropCalculator', function() {
 	
 	return {
