@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropCalculator, fropInputDataStore) {
+angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropCalculator, fropInputDataStore, anchorSmoothScroll) {
 
 	var inputData = null;
 
@@ -158,6 +158,13 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 	
 
 	$scope.mustShowPanel = false;
+	
+	$scope.scrollToForm = function(){
+
+    	setTimeout(function() {
+    		anchorSmoothScroll.scrollTo('formDiv');
+    	}, 0);
+	};
 	
 	//Watch sur fropInputDataStore pour setter mustShowPanel
 	$scope.$watch(

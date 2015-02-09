@@ -1,7 +1,12 @@
 
-<div class="row" ng-controller="FropResultGraphCtrl" ng-show="mustShowPanel">
+<div class="row" ng-controller="FropResultGraphCtrl"
+	ng-show="mustShowPanel">
 	<div class="col-sm-6 col-sm-offset-3">
 
 		<div id="chart-div" style="height: 400px; margin: 0 auto"></div>
+	</div>
+
+	<div class="col-sm-6 col-sm-offset-3 text-center">
+		<button class="btn btn-primary" ng-click="scrollToForm()">Refaire une simulation</button>
 	</div>
 </div>
