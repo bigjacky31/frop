@@ -66,3 +66,13 @@ h1,h2,h3,h4,h5,h6,.navbar-brand,.brand-name {
 /* 	color : #8a6d3b; */
 	background-color: #f2dede;
 }
+.frop-fraisreels-text-yes{
+	color: #3c763d;
+}
+.frop-fraisreels-text-no{
+	color: #a94442;
+}
+
+.frop-result-icon-container{
+	font-size: 60px;
+}
