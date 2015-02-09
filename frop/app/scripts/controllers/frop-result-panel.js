@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frop').controller('FropResultPanelCtrl', function ($scope, fropCalculator, fropInputDataStore, $location, $anchorScroll) {
+angular.module('frop').controller('FropResultPanelCtrl', function ($scope, fropCalculator, fropInputDataStore, $location, $anchorScroll, anchorSmoothScroll) {
 
 	$scope.mustShowPanel = false;
 	
@@ -23,8 +23,9 @@ angular.module('frop').controller('FropResultPanelCtrl', function ($scope, fropC
 		}
 
 	      //scroll jusqu'au div des resultats
-	      $location.hash('resultDiv');
-	      $anchorScroll();
+//	      $location.hash('resultDiv');
+//	      $anchorScroll();
+		anchorSmoothScroll.scrollTo('resultDiv');
 		
 	};
 
