@@ -29,9 +29,9 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 	var initGraph = function(){
 		
 
-		var fraisReelsCost = fropCalculator.calculateFraisReelsCost( inputData.fiscalPower, inputData.kilometers );
+		var fraisReelsCost = fropCalculator.calculateFraisReelsCost( inputData.fiscalPower, inputData.kilometers, inputData.foodPrice );
 		var defaultCost = fropCalculator.calculateDefaultCost( inputData.income );
-		var rentabilityKms = fropCalculator.calculateRentabilityKms(inputData.fiscalPower, inputData.income);
+		var rentabilityKms = fropCalculator.calculateRentabilityKms(inputData.fiscalPower, inputData.income, inputData.foodPrice);
 		
 		//Calcul de l'abscisse max du graphe :
 		//2 lignes verticales sont à tracer : celle des kms rentables et celle des kms saisis
@@ -46,11 +46,11 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 		
 		var fraisReelsSerieData = [];
 		for( var curAbs = 0 ; curAbs <= absMax ; curAbs += 5000 ){
-			fraisReelsSerieData.push( [curAbs, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, curAbs)] );
+			fraisReelsSerieData.push( [curAbs, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, curAbs, inputData.foodPrice)] );
 		}
 		
 		//On ajoute le point de croisement
-		fraisReelsSerieData.push( [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms)] );
+		fraisReelsSerieData.push( [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms, inputData.foodPrice)] );
 		
 		//On ajoute le point du km saisi
 		fraisReelsSerieData.push( [inputData.kilometers, fraisReelsCost] );

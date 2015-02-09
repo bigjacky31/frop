@@ -6,11 +6,11 @@ angular.module('frop').controller('FropResultPanelCtrl', function ($scope, fropC
 	
 	var initPanel = function() {
 
-		var deductibleFraisReels = fropCalculator.calculateFraisReelsCost( $scope.inputData.fiscalPower, $scope.inputData.kilometers );
+		var deductibleFraisReels = fropCalculator.calculateFraisReelsCost( $scope.inputData.fiscalPower, $scope.inputData.kilometers, $scope.inputData.foodPrice );
 		var deductibleDefault = fropCalculator.calculateDefaultCost( $scope.inputData.income );
 		var deductibleDelta = Math.abs( deductibleFraisReels - deductibleDefault );
-		var rentableKms = fropCalculator.calculateRentabilityKms($scope.inputData.fiscalPower, $scope.inputData.income);
-		var rentableIncome = fropCalculator.calculateRentabilityIncome($scope.inputData.fiscalPower, $scope.inputData.kilometers);
+		var rentableKms = fropCalculator.calculateRentabilityKms($scope.inputData.fiscalPower, $scope.inputData.income, $scope.inputData.foodPrice);
+		var rentableIncome = fropCalculator.calculateRentabilityIncome($scope.inputData.fiscalPower, $scope.inputData.kilometers, $scope.inputData.foodPrice);
 		var fraisReelsOk = deductibleFraisReels > deductibleDefault;
 		
 		$scope.result = {
