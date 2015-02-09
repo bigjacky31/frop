@@ -32,37 +32,43 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 		var fraisReelsCost = fropCalculator.calculateFraisReelsCost( inputData.fiscalPower, inputData.kilometers );
 		var defaultCost = fropCalculator.calculateDefaultCost( inputData.income );
 		var rentabilityKms = fropCalculator.calculateRentabilityKms(inputData.fiscalPower, inputData.income);
-
-
-		//Calcul des points a afficher pour la courbe des frais r�els
-		var fraisReelsSerieData = [
-		                           [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms)],
-		                           [0, 0], 
-		                           [5000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 5000)], 
-		                           [10000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 10000)], 
-		                           [15000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 15000)], 
-		                           [20000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 20000)], 
-		                           [25000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 25000)], 
-		                           [30000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 30000)], 
-		                           [35000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 35000)], 
-		                           [40000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 40000)], 
-		                           [45000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 45000)], 
-		                           [50000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 50000)], 
-		                           [55000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 55000)], 
-		                           [60000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 60000)], 
-		                           [65000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 65000)], 
-		                           [70000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 70000)], 
-		                           [75000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 75000)], 
-		                           [80000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 80000)],
-		                           [85000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 85000)],
-		                           [90000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 90000)],
-		                           [95000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 95000)],
-		                           [100000, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, 100000)]
-		                           ];
+		
+		//Calcul de l'abscisse max du graphe :
+		//2 lignes verticales sont à tracer : celle des kms rentables et celle des kms saisis
+		//
+		//Regle : 
+		// -> On prends la distance entre l'axe des ordonnées et la premiere ligne.
+		// -> On ajoute cette distance à la deuxieme ligne pour obtenir l'abscisse max
+		// -> On arrondit l'abscisse max aux 5000 kms superieur
+		var distance = Math.min( rentabilityKms, inputData.kilometers );
+		var absMax = Math.max( rentabilityKms, inputData.kilometers ) + distance;
+		absMax = Math.ceil(absMax / 5000) * 5000;
+		
+		var fraisReelsSerieData = [];
+		for( var curAbs = 0 ; curAbs <= absMax ; curAbs += 5000 ){
+			fraisReelsSerieData.push( [curAbs, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, curAbs)] );
+		}
+		
+		//On ajoute le point de croisement
+		fraisReelsSerieData.push( [rentabilityKms, fropCalculator.calculateFraisReelsCost(inputData.fiscalPower, rentabilityKms)] );
+		
+		//On ajoute le point du km saisi
+		fraisReelsSerieData.push( [inputData.kilometers, fraisReelsCost] );
 
 		//Tri des points a afficher pour la courbe des frais r�els 
 		fraisReelsSerieData = sortSerie( fraisReelsSerieData );
 
+		
+		//Pour la droite de l'option par défaut, on trace de 0 à absMax
+		var defaultSerieData = [[0, defaultCost], [absMax, defaultCost]];
+		
+		var verticalInputKmsColor;
+		if( fraisReelsCost > defaultCost ){
+			verticalInputKmsColor = '#3c763d';
+		}
+		else{
+			verticalInputKmsColor = '#a94442';
+		}
 
 
 		$('#chart-div').highcharts({
@@ -92,7 +98,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				plotLines : [
 				             {
 				            	 value : rentabilityKms,
-				            	 color : 'green',
+				            	 color : 'black',
 				            	 width : 2,
 				            	 label : {
 				            		 text : 'Rentable'
@@ -100,7 +106,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				             },
 				             {
 				            	 value : inputData.kilometers,
-				            	 color : 'red',
+				            	 color : verticalInputKmsColor,
 				            	 width : 2,
 				            	 label : {
 				            		 text : 'Votre kilométrage'
@@ -136,18 +142,24 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 			},
 			series: [{
 				name: '10%',
-				color: 'rgba(165,170,217,1)',
-				data: [[0, defaultCost], [30000, defaultCost]]
+				color: '#a94442',
+				data: defaultSerieData
 			}, {
 				name: 'Frais réels',
-				color: 'rgba(126,86,134,.9)',
+				color: '#3c763d',
 				//TODO sort data
 				data : fraisReelsSerieData
 			}]
 		});
 	};
 
+	
+	
+	
+
 	$scope.mustShowPanel = false;
+	
+	//Watch sur fropInputDataStore pour setter mustShowPanel
 	$scope.$watch(
 			function(){
 				return fropInputDataStore.getFropInputData();
@@ -156,14 +168,13 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				if( value != null ){
 					inputData = value;
 					$scope.mustShowPanel = true;
-					initGraph();
+					
+					//SetTimeout pour laisser le div s'afficher avant d'init le graph
+		        	setTimeout(function() {
+						initGraph();
+		        	}, 0);
 				}
 			}
 	);
-
-
-
-
-
 
 });
