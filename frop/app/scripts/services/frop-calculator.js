@@ -4,22 +4,22 @@ angular.module('frop').factory('fropCalculator', function() {
 		calculateFraisReelsCost : function( fiscalPower, kilometers ){
 			//Bareme 2014
 			// cf http://www.service-public.fr/actualites/003037.html
-			if( fiscalPower <= 3 ){
+			if( fiscalPower.value <= 3 ){
 				if( kilometers <= 5000 ){ return kilometers * 0.408; }
 				else if( kilometers <= 20000 ){ return kilometers * 0.244 + 820; }
 				else{ return kilometers * 0.285; }
 			}
-			else if( fiscalPower == 4 ){
+			else if( fiscalPower.value == 4 ){
 				if( kilometers <= 5000 ){ return kilometers * 0.491; }
 				else if( kilometers <= 20000 ){ return kilometers * 0.276 + 1077; }
 				else{ return kilometers * 0.330; }
 			}
-			else if( fiscalPower == 5 ){
+			else if( fiscalPower.value == 5 ){
 				if( kilometers <= 5000 ){ return kilometers * 0.540; }
 				else if( kilometers <= 20000 ){ return kilometers * 0.303 + 1182; }
 				else{ return kilometers * 0.362; }
 			}
-			else if( fiscalPower == 6 ){
+			else if( fiscalPower.value == 6 ){
 				if( kilometers <= 5000 ){ return kilometers * 0.565; }
 				else if( kilometers <= 20000 ){ return kilometers * 0.318 + 1238; }
 				else{ return kilometers * 0.380; }
@@ -47,7 +47,7 @@ angular.module('frop').factory('fropCalculator', function() {
 			var borneMiddle = ( borneMin + borneMax ) / 2;
 
 			while( borneMax - borneMin > 1 ){
-				if( defaultCost > this.calculateFraisReelsCost( fiscalPower, borneMiddle ) ){
+				if( defaultCost > this.calculateFraisReelsCost( fiscalPower.value, borneMiddle ) ){
 					borneMin = borneMiddle;
 				}
 				else{
@@ -64,7 +64,7 @@ angular.module('frop').factory('fropCalculator', function() {
 		calculateRentabilityIncome : function( fiscalPower, kms ){
 			//Calcul de la borne max
 			var borneMax = 10000000;
-			var fraisReelsCost = this.calculateFraisReelsCost( fiscalPower, kms );
+			var fraisReelsCost = this.calculateFraisReelsCost( fiscalPower.value, kms );
 
 			//Calcul par dichotomie
 			var borneMin = 0;

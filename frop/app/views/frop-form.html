@@ -21,13 +21,8 @@
 						fiscale</label>
 					<div class="col-sm-8">
 						<select class="form-control" id="inputPuissance"
-							ng-model="model.fiscalPower">
-							<option>Puissance fiscale</option>
-							<option value="3">&lt;= 3 CV</option>
-							<option value="4">4 CV</option>
-							<option value="5">5 CV</option>
-							<option value="6">6 CV</option>
-							<option value="7">&gt;= 7 CV</option>
+							ng-model="model.fiscalPower" ng-options="elt.label for elt in fiscalPowerList">
+							<option label="Puissance fiscale..."></option>
 						</select>
 					</div>
 				</div>
