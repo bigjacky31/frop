@@ -25,7 +25,7 @@ angular.module('frop').factory('fropCalculator', function() {
 				else if( kilometers <= 20000 ){ res = kilometers * 0.318 + 1238; }
 				else{ res = kilometers * 0.380; }
 			}
-			else{
+			else if( fiscalPower.value == 7 ){
 				if( kilometers <= 5000 ){ res = kilometers * 0.592; }
 				else if( kilometers <= 20000 ){ res = kilometers * 0.335 + 1282; }
 				else{ res = kilometers * 0.399; }
@@ -49,7 +49,7 @@ angular.module('frop').factory('fropCalculator', function() {
 			var borneMiddle = ( borneMin + borneMax ) / 2;
 
 			while( borneMax - borneMin > 1 ){
-				if( defaultCost > this.calculateFraisReelsCost( fiscalPower.value, borneMiddle ) ){
+				if( defaultCost > this.calculateFraisReelsCost( fiscalPower, borneMiddle ) ){
 					borneMin = borneMiddle;
 				}
 				else{
@@ -66,7 +66,7 @@ angular.module('frop').factory('fropCalculator', function() {
 		calculateRentabilityIncome : function( fiscalPower, kms ){
 			//Calcul de la borne max
 			var borneMax = 10000000;
-			var fraisReelsCost = this.calculateFraisReelsCost( fiscalPower.value, kms );
+			var fraisReelsCost = this.calculateFraisReelsCost( fiscalPower, kms );
 
 			//Calcul par dichotomie
 			var borneMin = 0;
