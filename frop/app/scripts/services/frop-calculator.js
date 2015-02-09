@@ -4,35 +4,37 @@ angular.module('frop').factory('fropCalculator', function() {
 		calculateFraisReelsCost : function( fiscalPower, kilometers ){
 			//Bareme 2014
 			// cf http://www.service-public.fr/actualites/003037.html
+			var res = 0;
 			if( fiscalPower.value <= 3 ){
-				if( kilometers <= 5000 ){ return kilometers * 0.408; }
-				else if( kilometers <= 20000 ){ return kilometers * 0.244 + 820; }
-				else{ return kilometers * 0.285; }
+				if( kilometers <= 5000 ){ res = kilometers * 0.408; }
+				else if( kilometers <= 20000 ){ res = kilometers * 0.244 + 820; }
+				else{ res = kilometers * 0.285; }
 			}
 			else if( fiscalPower.value == 4 ){
-				if( kilometers <= 5000 ){ return kilometers * 0.491; }
-				else if( kilometers <= 20000 ){ return kilometers * 0.276 + 1077; }
-				else{ return kilometers * 0.330; }
+				if( kilometers <= 5000 ){ res = kilometers * 0.491; }
+				else if( kilometers <= 20000 ){ res = kilometers * 0.276 + 1077; }
+				else{ res = kilometers * 0.330; }
 			}
 			else if( fiscalPower.value == 5 ){
-				if( kilometers <= 5000 ){ return kilometers * 0.540; }
-				else if( kilometers <= 20000 ){ return kilometers * 0.303 + 1182; }
-				else{ return kilometers * 0.362; }
+				if( kilometers <= 5000 ){ res = kilometers * 0.540; }
+				else if( kilometers <= 20000 ){ res = kilometers * 0.303 + 1182; }
+				else{ res = kilometers * 0.362; }
 			}
 			else if( fiscalPower.value == 6 ){
-				if( kilometers <= 5000 ){ return kilometers * 0.565; }
-				else if( kilometers <= 20000 ){ return kilometers * 0.318 + 1238; }
-				else{ return kilometers * 0.380; }
+				if( kilometers <= 5000 ){ res = kilometers * 0.565; }
+				else if( kilometers <= 20000 ){ res = kilometers * 0.318 + 1238; }
+				else{ res = kilometers * 0.380; }
 			}
 			else{
-				if( kilometers <= 5000 ){ return kilometers * 0.592; }
-				else if( kilometers <= 20000 ){ return kilometers * 0.335 + 1282; }
-				else{ return kilometers * 0.399; }
+				if( kilometers <= 5000 ){ res = kilometers * 0.592; }
+				else if( kilometers <= 20000 ){ res = kilometers * 0.335 + 1282; }
+				else{ res = kilometers * 0.399; }
 			}
+			return Math.round( res );
 		},
 		
 		calculateDefaultCost : function(income){
-			return income * 0.1;
+			return Math.round( income * 0.1 );
 		},
 		
 		calculateRentabilityKms : function( fiscalPower, income ){
@@ -55,7 +57,7 @@ angular.module('frop').factory('fropCalculator', function() {
 				}
 				borneMiddle = ( borneMin + borneMax ) / 2;
 			}
-			return borneMiddle;
+			return Math.round( borneMiddle );
 		},
 		
 		
@@ -81,7 +83,7 @@ angular.module('frop').factory('fropCalculator', function() {
 				}
 				borneMiddle = ( borneMin + borneMax ) / 2;
 			}
-			return borneMiddle;
+			return Math.round( borneMiddle );
 		}
 	};
   
