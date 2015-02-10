@@ -8,12 +8,12 @@
 
 			<form class="form-horizontal" role="form" name="fropForm"
 				 ng-submit="submit()" novalidate>
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.income.$invalid}">
 					<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
 					<div class="col-sm-8">
 						<input type="number" class="form-control" name="income"
 							id="inputIncome" placeholder="Revenus" ng-model="model.income" 
-							min=0 max="1000000" ng-required="true" />
+							min=0 max="1000000" step="100" ng-required="true" />
 						
 						<div class="text-danger" ng-show="showErrors && fropForm.income.$invalid">
 							<span class="error" ng-show="fropForm.income.$error.required"> Required!</span>
@@ -24,7 +24,7 @@
 						
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.fiscalPower.$invalid}">
 					<label for="inputPuissance" class="col-sm-4 control-label"
 						title="Puissance fiscale du véhicule en CV">Puissance
 						fiscale</label>
@@ -39,14 +39,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group has-error">
+				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.kilometers.$invalid}">
 					<label for="inputKm" class="col-sm-4 control-label"
 						title="Kms parcourus en 1 an pour votre emploi">Kms
 						parcourus</label>
 					<div class="col-sm-8">
 						<input type="number" class="form-control" id="inputKm" name="kilometers"
 							placeholder="Kms parcourus" ng-model="model.kilometers"
-							min=0 max="1000000" ng-required="true" >
+							min=0 max="1000000" step="100" ng-required="true" >
 							
 						<div class="text-danger" ng-show="showErrors && fropForm.kilometers.$invalid">
 							<span class="error" ng-show="fropForm.kilometers.$error.required"> Required!</span>
@@ -56,13 +56,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.foodPrice.$invalid}">
 					<label for="inputFraisRepas" class="col-sm-4 control-label"
 						title="Frais de repas pour votre emploi">Frais de repas</label>
 					<div class="col-sm-8">
 						<input type="number" class="form-control" name="foodPrice"
 							id="inputFraisRepas" placeholder="Frais de repas"
-							ng-model="model.foodPrice" min=0 max="100000" ng-required="true">
+							ng-model="model.foodPrice" min=0 max="100000" step="100" ng-required="true">
 						<div class="text-danger" ng-show="showErrors && fropForm.foodPrice.$invalid">
 							<span class="error" ng-show="fropForm.foodPrice.$error.required"> Required!</span>
   							<span class="error" ng-show="fropForm.foodPrice.$error.number"> Not number </span>
