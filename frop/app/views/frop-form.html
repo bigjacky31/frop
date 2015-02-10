@@ -6,7 +6,7 @@
 
 		<div class="col-sm-6 col-sm-offset-3">
 
-			<form class="form-horizontal" role="form"
+			<form class="form-horizontal" role="form" name="fropForm"
 				 ng-submit="submit()">
 				<div class="form-group">
 					<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
@@ -46,7 +46,7 @@
 				</div>
 				<div class="form-group">
 					<div class="text-center">
-						<button type="submit" class="btn btn-primary">Calculer !</button>
+						<button type="submit" class="btn btn-primary" ng-disabled="!isSubmitEnabled()">Calculer !</button>
 					</div>
 				</div>
 			</form>
