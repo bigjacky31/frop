@@ -16,10 +16,10 @@
 							min=0 max="1000000" step="100" ng-required="true" />
 						
 						<div class="text-danger" ng-show="showErrors && fropForm.income.$invalid">
-							<span class="error" ng-show="fropForm.income.$error.required"> Required!</span>
-  							<span class="error" ng-show="fropForm.income.$error.number"> Not number </span>
-  							<span class="error" ng-show="fropForm.income.$error.min"> min </span>
-  							<span class="error" ng-show="fropForm.income.$error.max"> max </span>
+							<span class="error" ng-show="fropForm.income.$error.required">Veuillez saisir un revenu.</span>
+  							<span class="error" ng-show="fropForm.income.$error.number">Veuillez saisir un nombre.</span>
+  							<span class="error" ng-show="fropForm.income.$error.min">Veuillez saisir un nombre supérieur à 0.</span>
+  							<span class="error" ng-show="fropForm.income.$error.max">Veuillez saisir un nombre inférieur à 1000000.</span>
 						</div>
 						
 					</div>
@@ -35,7 +35,7 @@
 							<option label="Puissance fiscale..."></option>
 						</select>
 						<div class="text-danger" ng-show="showErrors && fropForm.fiscalPower.$invalid">
-							<span class="error" ng-show="fropForm.fiscalPower.$error.required"> Required!</span>
+							<span class="error" ng-show="fropForm.fiscalPower.$error.required">Veuillez saisir la puissance fiscale de votre véhicule.</span>
 						</div>
 					</div>
 				</div>
@@ -49,10 +49,10 @@
 							min=0 max="1000000" step="100" ng-required="true" >
 							
 						<div class="text-danger" ng-show="showErrors && fropForm.kilometers.$invalid">
-							<span class="error" ng-show="fropForm.kilometers.$error.required"> Required!</span>
-  							<span class="error" ng-show="fropForm.kilometers.$error.number"> Not number </span>
-  							<span class="error" ng-show="fropForm.kilometers.$error.min"> min </span>
-  							<span class="error" ng-show="fropForm.kilometers.$error.max"> max </span>
+							<span class="error" ng-show="fropForm.kilometers.$error.required">Veuillez saisir un kilométrage.</span>
+  							<span class="error" ng-show="fropForm.kilometers.$error.number">Veuillez saisir un nombre.</span>
+  							<span class="error" ng-show="fropForm.kilometers.$error.min">Veuillez saisir un nombre supérieur à 0.</span>
+  							<span class="error" ng-show="fropForm.kilometers.$error.max">Veuillez saisir un nombre inférieur à 1000000.</span>
 						</div>
 					</div>
 				</div>
@@ -64,10 +64,10 @@
 							id="inputFraisRepas" placeholder="Frais de repas"
 							ng-model="model.foodPrice" min=0 max="100000" step="100" ng-required="true">
 						<div class="text-danger" ng-show="showErrors && fropForm.foodPrice.$invalid">
-							<span class="error" ng-show="fropForm.foodPrice.$error.required"> Required!</span>
-  							<span class="error" ng-show="fropForm.foodPrice.$error.number"> Not number </span>
-  							<span class="error" ng-show="fropForm.foodPrice.$error.min"> min </span>
-  							<span class="error" ng-show="fropForm.foodPrice.$error.max"> max </span>
+							<span class="error" ng-show="fropForm.foodPrice.$error.required">Veuillez saisir le montant de vos frais repas.</span>
+  							<span class="error" ng-show="fropForm.foodPrice.$error.number">Veuillez saisir un nombre.</span>
+  							<span class="error" ng-show="fropForm.foodPrice.$error.min">Veuillez saisir un nombre supérieur à 0.</span>
+  							<span class="error" ng-show="fropForm.foodPrice.$error.max">Veuillez saisir un nombre inférieur à 100000.</span>
 						</div>
 					</div>
 				</div>
