@@ -4,7 +4,7 @@ angular.module('frop').controller('FropFormCtrl', function ($scope, fropCalculat
 
 	$scope.showErrors = false;
 	$scope.model = {
-			
+			foodPrice:0
 	}
 	$scope.fiscalPowerList = fiscalPowerList;
 
