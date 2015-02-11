@@ -76,7 +76,7 @@ angular.module('frop').controller('FropResultGraphCtrl', function ($scope, fropC
 				type: 'area'
 			},
 			title: {
-				text: 'Frais réels... Ou pas !'
+				text: ''
 			},
 			credits: {
 				enabled: false
