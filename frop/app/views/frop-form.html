@@ -9,8 +9,9 @@
 			<form class="form-horizontal" role="form" name="fropForm"
 				 ng-submit="submit()" novalidate>
 				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.income.$invalid}">
-					<label for="inputIncome" class="col-sm-4 control-label">Revenus</label>
-					<div class="col-sm-8">
+					<label for="inputIncome" class="col-sm-6 control-label">Revenus nets 2014
+					<span class="glyphicon glyphicon-question-sign"></span></label>
+					<div class="col-sm-6">
 						<input type="number" class="form-control" name="income"
 							id="inputIncome" placeholder="Revenus" ng-model="model.income" 
 							min=0 max="1000000" step="100" ng-required="true" />
@@ -25,10 +26,11 @@
 					</div>
 				</div>
 				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.fiscalPower.$invalid}">
-					<label for="inputPuissance" class="col-sm-4 control-label"
-						title="Puissance fiscale du véhicule en CV">Puissance
-						fiscale</label>
-					<div class="col-sm-8">
+					<label for="inputPuissance" class="col-sm-6 control-label"
+						title="Puissance fiscale du véhicule utilisé pour vos trajets professionnels">
+						Puissance fiscale
+						<span class="glyphicon glyphicon-question-sign"></span></label>
+					<div class="col-sm-6">
 						<select class="form-control" id="inputPuissance" name="fiscalPower"
 							ng-model="model.fiscalPower" ng-options="elt.label for elt in fiscalPowerList"
 							ng-required="true">
@@ -40,10 +42,10 @@
 					</div>
 				</div>
 				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.kilometers.$invalid}">
-					<label for="inputKm" class="col-sm-4 control-label"
-						title="Kms parcourus en 1 an pour votre emploi">Kms
-						parcourus</label>
-					<div class="col-sm-8">
+					<label for="inputKm" class="col-sm-6 control-label"
+						title="Kms parcourus en 1 an pour votre emploi">Kms parcourus 
+						<span class="glyphicon glyphicon-question-sign"></span></label>
+					<div class="col-sm-6">
 						<input type="number" class="form-control" id="inputKm" name="kilometers"
 							placeholder="Kms parcourus" ng-model="model.kilometers"
 							min=0 max="1000000" step="100" ng-required="true" >
@@ -57,9 +59,10 @@
 					</div>
 				</div>
 				<div class="form-group" ng-class="{'has-error': showErrors && fropForm.foodPrice.$invalid}">
-					<label for="inputFraisRepas" class="col-sm-4 control-label"
-						title="Frais de repas pour votre emploi">Frais de repas</label>
-					<div class="col-sm-8">
+					<label for="inputFraisRepas" class="col-sm-6 control-label"
+						title="Frais de repas pour votre emploi">Frais de repas
+						<span class="glyphicon glyphicon-question-sign"></span></label>
+					<div class="col-sm-6">
 						<input type="number" class="form-control" name="foodPrice"
 							id="inputFraisRepas" placeholder="Frais de repas"
 							ng-model="model.foodPrice" min=0 max="100000" step="100" ng-required="true">
